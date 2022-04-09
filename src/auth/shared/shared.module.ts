@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// components
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
+
+// services
+import { AuthService } from './services/auth/auth.service';
 
 
 @NgModule({
@@ -17,4 +21,15 @@ import { AuthFormComponent } from './components/auth-form/auth-form.component';
     AuthFormComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+  // We are importing AuthService this way is so the AuthService
+  // isn't instantiated twice once in register module and then in login module
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        AuthService
+      ]
+    };
+  }
+}
