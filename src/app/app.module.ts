@@ -8,6 +8,7 @@ import { Store } from 'store';
 
 // feature modules
 import { AuthModule } from '../auth/auth.module';
+import { HealthModule } from '../health/health.module';
 
 
 // containers
@@ -27,7 +28,8 @@ import { AppNavComponent } from './components/app-nav/app-nav.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    HealthModule
   ],
   providers: [
     Store
